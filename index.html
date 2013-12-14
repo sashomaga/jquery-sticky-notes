@@ -1,0 +1,30 @@
+﻿ <!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sticky Notes</title>
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="script/qj_cus_plugins.js"></script>
+    <script src="script/functions.js"></script>
+    <script src="script/note_controller.js"></script>
+    <script>
+        $(document).ready(function () {
+            note_controller.init();
+            $('#new_note').on("click", function () {
+                note_controller.createNode();
+            });
+            window.onbeforeunload = function (e) {
+                note_controller.archivate();
+            };
+            note_controller.restore();
+        });
+    </script>
+</head>
+<body>
+    <button id="new_note">add note</button>
+</body>
+</html>
